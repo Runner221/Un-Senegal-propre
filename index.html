@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Un Sénégal Propre - Jeu de Tri</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="menu" class="menu">
+    <h1>🌍 Un Sénégal Propre</h1>
+    <h2>Jeu de Tri des Déchets</h2>
+    <div class="difficulty-buttons">
+      <button onclick="startGame('facile')" class="btn-facile">Facile</button>
+      <button onclick="startGame('moyen')" class="btn-moyen">Moyen</button>
+      <button onclick="startGame('difficile')" class="btn-difficile">Difficile</button>
+      <button onclick="startGame('survie')" class="btn-survie">Mode Survie</button>
+      <button onclick="showHighScores()" class="btn-scores">🏆 Scores</button>
+    </div>
+  </div>
+
+  <div id="game" class="game hidden">
+    <div class="header">
+      <div class="score-container">
+        <span>Score: <span id="score">0</span></span>
+        <span>Niveau: <span id="level">Facile</span></span>
+        <span>Série: <span id="streak">0</span></span>
+      </div>
+      <div class="timer-container">
+        <span>Temps: <span id="timer">60</span>s</span>
+      </div>
+      <div id="power-ups" class="power-ups-container"></div>
+      <button onclick="backToMenu()" class="btn-back">← Menu</button>
+    </div>
+
+    <div class="game-area">
+      <div class="trash-container">
+        <h3>Déchets à trier</h3>
+        <div id="trash-items"></div>
+      </div>
+
+      <div class="bins-container">
+        <div class="bin" data-type="plastique" ondrop="drop(event)" ondragover="allowDrop(event)">
+          <img src="https://i.postimg.cc/zG9YXMdC/poubelle.png" alt="Poubelle Plastique" />
+          <p>Plastique</p>
+          <div class="bin-content"></div>
+        </div>
+        
+        <div class="bin" data-type="papier" ondrop="drop(event)" ondragover="allowDrop(event)">
+          <img src="https://i.postimg.cc/zG9YXMdC/poubelle.png" alt="Poubelle Papier" />
+          <p>Papier</p>
+          <div class="bin-content"></div>
+        </div>
+        
+        <div class="bin" data-type="verre" ondrop="drop(event)" ondragover="allowDrop(event)">
+          <img src="https://i.postimg.cc/zG9YXMdC/poubelle.png" alt="Poubelle Verre" />
+          <p>Verre</p>
+          <div class="bin-content"></div>
+        </div>
+        
+        <div class="bin" data-type="organique" ondrop="drop(event)" ondragover="allowDrop(event)">
+          <img src="https://i.postimg.cc/zG9YXMdC/poubelle.png" alt="Poubelle Organique" />
+          <p>Organique</p>
+          <div class="bin-content"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="game-info">
+      <div class="progress">
+        <span>Progression: <span id="progress">0</span>/<span id="total">0</span></span>
+      </div>
+    </div>
+  </div>
+
+  <div id="gameOver" class="game-over hidden">
+    <h2>Partie Terminée!</h2>
+    <div class="final-score">
+      <p>Score Final: <span id="finalScore">0</span></p>
+      <p>Niveau: <span id="finalLevel">Facile</span></p>
+    </div>
+    <div id="detailedStats" class="detailed-stats"></div>
+    <div class="game-over-buttons">
+      <button onclick="restartGame()" class="btn-restart">Rejouer</button>
+      <button onclick="backToMenu()" class="btn-menu">Menu Principal</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
